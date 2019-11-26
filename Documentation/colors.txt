@@ -1,0 +1,4 @@
+From logo:
+Heart light pink: #F4A9A9
+Heart light purple: #A096A1
+Chivalri red: #EB5556
