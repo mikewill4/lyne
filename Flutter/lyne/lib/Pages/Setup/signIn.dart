@@ -28,11 +28,11 @@ class SignInPageState extends State<SignInPage> {
             Container(
                 transform: Matrix4.translationValues(0.0, 50.0, 0.0), // TODO: make sure this is the correct value
                 child: Image.asset(
-                  'assets/graphics/logo.png',
+                  'assets/graphics/Lyne_Logo_Light_Theme.png',
                 )
             ),
             Container(
-              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+              margin: const EdgeInsets.only(left: 30.0, right: 30.0),
               child: TextFormField(
                 validator: (input) {
                   if (input.isEmpty) {
@@ -64,7 +64,7 @@ class SignInPageState extends State<SignInPage> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+              margin: const EdgeInsets.only(left: 30.0, right: 30.0),
               child: TextFormField(
                 validator: (input) {
                   if (input.length < 6) {
@@ -105,7 +105,7 @@ class SignInPageState extends State<SignInPage> {
                         onPressed: signIn,
                         child: Text('Sign in'),
                         textColor: Colors.white,
-                        color: const Color(0xffeb5556),
+                        color: const Color(0xff1f1f1f),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0))))),
             Container(
@@ -116,7 +116,7 @@ class SignInPageState extends State<SignInPage> {
                       onPressed: () => Navigator.of(context).pop(true),
                       child: Text('Don\'t have an account?'),
                       color: Colors.white,
-                      textColor: const Color(0xffeb5556),
+                      textColor: const Color(0xff1f1f1f),
                     )))
           ],
         ),

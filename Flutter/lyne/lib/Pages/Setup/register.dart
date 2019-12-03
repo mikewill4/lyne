@@ -1,6 +1,7 @@
 import 'package:lyne/Pages/Setup/signIn.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -8,7 +9,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  String _email, _password;
+  String _email, _password, _name;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -25,16 +26,16 @@ class _RegisterPageState extends State<RegisterPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+              margin: const EdgeInsets.only(left: 30.0, right: 30.0),
               child: TextFormField(
                 validator: (input) {
                   if (input.isEmpty) {
                     return 'Please enter your full name.';
                   }
                 },
-                //onSaved: (input) => _email = input,
+                onSaved: (input) => _name = input,
                 decoration: InputDecoration(
-                  labelText: 'Full name',
+                  labelText: 'Name',
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey),
                   ),
@@ -57,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+              margin: const EdgeInsets.only(left: 30.0, right: 30.0),
               child: TextFormField(
                 validator: (input) {
                   if (input.isEmpty) {
@@ -89,7 +90,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+              margin: const EdgeInsets.only(left: 30.0, right: 30.0),
               child: TextFormField(
                 validator: (input) {
                   if (input.length < 6) {
@@ -130,7 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         onPressed: register,
                         child: Text('Register'),
                         textColor: Colors.white,
-                        color: const Color(0xffeb5556),
+                        color: const Color(0xff1f1f1f),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0))))),
             Container(
@@ -141,7 +142,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       onPressed: () => Navigator.of(context).pop(true),
                       child: Text('Already have an account?'),
                       color: Colors.white,
-                      textColor: const Color(0xffeb5556),
+                      textColor: const Color(0xff1f1f1f),
                     )))
           ],
         ),
@@ -156,10 +157,11 @@ class _RegisterPageState extends State<RegisterPage> {
       // Connect to Firebase
       formState.save();
       try {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password);
+        FirebaseUser user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password)).user;
         //user.sendEmailVerification();
         //Navigator.of(context).pop();
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignInPage()));
+        Firestore.instance.collection('users').document(user.uid).setData({'email': _email, 'name': _name});
       } catch (e) {
         print(e.message);
       }

@@ -18,7 +18,7 @@ class _WelcomePageState extends State<WelcomePage> {
         children: <Widget>[
           Expanded(child: Container(),),
           Image.asset(
-            'assets/graphics/logo.png',
+            'assets/graphics/Lyne_Logo_Light_Theme.png',
           ),
           Container(
               margin: const EdgeInsets.all(5.0),
@@ -29,7 +29,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       onPressed: navigateToSignIn,
                       child: Text('Sign in'),
                       textColor: Colors.white,
-                      color: const Color(0xffeb5556),
+                      color: const Color(0xff1f1f1f),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0)
                       )
@@ -45,7 +45,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       onPressed: navigateToRegister,
                       child: Text('Register'),
                       textColor: Colors.white,
-                      color: const Color(0xffeb5556),
+                      color: const Color(0xff1f1f1f),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0)
                       )
