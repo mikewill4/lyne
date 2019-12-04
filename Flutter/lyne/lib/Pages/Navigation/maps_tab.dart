@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 
-class MapsTabWidget extends StatelessWidget {
+class MapsTabWidget extends StatefulWidget {
+  @override
+  _MapsTabWidgetState createState() => _MapsTabWidgetState();
+}
 
-  // Maps
+class _MapsTabWidgetState extends State<MapsTabWidget> {
+  // Maps & location
   GoogleMapController mapController;
-  LatLng _center = const LatLng(38.9783926, -76.9510632);
+  List<Marker> _markers = <Marker>[];
+  Position _currentLocation;
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
+  }
+
+  @override
+  void initState() {
+    _getLocation();
+    super.initState();
   }
 
   @override
@@ -17,10 +29,30 @@ class MapsTabWidget extends StatelessWidget {
       body: GoogleMap(
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
-          target: _center,
+          target: LatLng(
+              0.0,
+              0.0,
+          ),
           zoom: 15.0
         ),
+        markers: Set<Marker>.of(_markers),
       ),
     );
+  }
+
+  void _getLocation() async {
+    _currentLocation = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
+
+    mapController.moveCamera(CameraUpdate.newLatLng(LatLng(_currentLocation.latitude, _currentLocation.longitude)));
+    
+    setState(() {
+      _markers.clear();
+      final marker = Marker(
+        markerId: MarkerId("curr_location"),
+        position: LatLng(_currentLocation.latitude, _currentLocation.longitude),
+      );
+      _markers.add(marker);
+    });
   }
 }

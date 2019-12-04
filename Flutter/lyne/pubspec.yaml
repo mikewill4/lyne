@@ -36,7 +36,11 @@ dependencies:
   cupertino_icons: ^0.1.2
 
   # Google Maps Integration
-  google_maps_flutter: ^0.5.11
+  google_maps_flutter: ^0.5.21
+
+  # Location services
+  geolocator: ^5.1.4+2
+  location: ^2.3.5
 
 dev_dependencies:
   flutter_test:
