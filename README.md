@@ -6,9 +6,12 @@ local spots. Designed for ENES460 at the University of Maryland, College Park.
 - [x] Repurpose login/registration code from previous project
 - [x] Create new logo
 - [x] Pick new color scheme
-- [ ] Integrate with a maps API
-- [ ] Add bottom navigation drawer
+- [x] Integrate with a maps API
+- [x] Add bottom navigation drawer
 - [ ] Add side navigation drawer
+- [ ] Create feed page
+- [ ] Create account page
 ## Credits
 * [Flutter](https://flutter.dev/)
 * [Canva](https://www.canva.com/)
+* [Google Maps API](https://developers.google.com/maps/documentation)
