@@ -8,6 +8,7 @@ local spots. Designed for ENES460 at the University of Maryland, College Park.
 - [x] Pick new color scheme
 - [x] Integrate with a maps API
 - [x] Add bottom navigation drawer
+- [ ] Get and use user location
 - [ ] Add side navigation drawer
 - [ ] Create feed page
 - [ ] Create account page
