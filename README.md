@@ -8,10 +8,9 @@ local spots. Designed for ENES460 at the University of Maryland, College Park.
 - [x] Pick new color scheme
 - [x] Integrate with a maps API
 - [x] Add bottom navigation drawer
-- [ ] Get and use user location
-- [ ] Add side navigation drawer
-- [ ] Create feed page
-- [ ] Create account page
+- [x] Get and use user location
+- [x] Create feed page
+- [x] Create account page
 ## Credits
 * [Flutter](https://flutter.dev/)
 * [Canva](https://www.canva.com/)
