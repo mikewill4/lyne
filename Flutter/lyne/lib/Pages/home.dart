@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:lyne/Pages/Navigation/tab.dart';
 import 'package:lyne/Pages/Navigation/maps_tab.dart';
+import 'package:lyne/Pages/Navigation/feed_tab.dart';
+import 'package:lyne/Pages/Navigation/account_tab.dart';
 
 class Home extends StatefulWidget {
   final FirebaseUser user;
@@ -19,8 +20,8 @@ class _HomeState extends State<Home> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     MapsTabWidget(),
-    TabWidget(Colors.yellowAccent),
-    TabWidget(Colors.black)
+    FeedTabWidget(),
+    AccountTabWidget()
   ];
 
   @override

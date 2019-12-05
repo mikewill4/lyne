@@ -37,6 +37,7 @@ class _MapsTabWidgetState extends State<MapsTabWidget> {
         ),
         markers: Set<Marker>.of(_markers),
       ),
+      resizeToAvoidBottomPadding: false,
     );
   }
 
