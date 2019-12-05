@@ -30,10 +30,10 @@ class _MapsTabWidgetState extends State<MapsTabWidget> {
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
           target: LatLng(
-              0.0,
-              0.0,
+            38.990868,
+            -76.934554,
           ),
-          zoom: 15.0
+          zoom: 17.5
         ),
         markers: Set<Marker>.of(_markers),
       ),
@@ -45,13 +45,14 @@ class _MapsTabWidgetState extends State<MapsTabWidget> {
     _currentLocation = await Geolocator()
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
 
-    mapController.moveCamera(CameraUpdate.newLatLng(LatLng(_currentLocation.latitude, _currentLocation.longitude)));
+    //mapController.moveCamera(CameraUpdate.newLatLng(LatLng(_currentLocation.latitude, _currentLocation.longitude)));
     
     setState(() {
       _markers.clear();
       final marker = Marker(
         markerId: MarkerId("curr_location"),
-        position: LatLng(_currentLocation.latitude, _currentLocation.longitude),
+        //position: LatLng(_currentLocation.latitude, _currentLocation.longitude),
+        position: LatLng(38.990868, -76.934554),
       );
       _markers.add(marker);
     });
